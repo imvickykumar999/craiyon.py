@@ -15,3 +15,4 @@ class GeneratedImages:
         for i in enumerate(self.images):
             with open(path / f'image-{i[0]+1}.png', 'wb') as f:
                 f.write(base64.decodebytes(i[1].encode('utf-8')))
+                
