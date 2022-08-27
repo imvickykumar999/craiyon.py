@@ -66,9 +66,10 @@ import base64
 generator = Craiyon() # Instantiates the api wrapper
 result = generator.generate("Professional photo of Obama flashing a flag with his last name") # Generates 9 images by default and you cannot change that
 images = result.images # A list containing image data as base64 encoded strings
-for i in images:
-    image = Image.open(BytesIO(base64.decodebytes(i.encode("utf-8"))))
+for i in enumerate(images):
+    image = Image.open(BytesIO(base64.decodebytes(i[1].encode("utf-8"))))
     # Use the PIL's Image object as per your needs
+    image.save(f'generated/image-{i[0]+1}.png')
 ```
 ![image](https://user-images.githubusercontent.com/55452780/181877028-740bee12-432d-4019-b74e-a17f53b79987.png)
 
